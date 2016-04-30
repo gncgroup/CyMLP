@@ -709,17 +709,16 @@ static const char __pyx_k_test[] = "__test__";
 static const char __pyx_k_print[] = "print";
 static const char __pyx_k_range[] = "range";
 static const char __pyx_k_import[] = "__import__";
+static const char __pyx_k_layers[] = "layers";
 static const char __pyx_k_prefix[] = "prefix_";
 static const char __pyx_k_weights[] = "weights";
 static const char __pyx_k_neuronet[] = "neuronet";
 static const char __pyx_k_input_size[] = "input_size";
 static const char __pyx_k_pyx_vtable[] = "__pyx_vtable__";
-static const char __pyx_k_layers_count[] = "layers_count";
 static const char __pyx_k_read_weights[] = "read_weights";
-static const char __pyx_k_neurons_count[] = "neurons_count";
 static const char __pyx_k_write_weights[] = "write_weights";
 static const char __pyx_k_train_and_test[] = "train_and_test";
-static const char __pyx_k_C_Users_User_Dropbox_mlp_library[] = "C:\\Users\\User\\Dropbox\\mlp_library\\example\\xor.pyx";
+static const char __pyx_k_C_Users_User_Dropbox_mlp_library[] = "C:\\Users\\User\\Dropbox\\mlp_library\\example\\xor\\xor.pyx";
 static PyObject *__pyx_kp_s_C_Users_User_Dropbox_mlp_library;
 static PyObject *__pyx_kp_s_Test;
 static PyObject *__pyx_n_s_end;
@@ -727,10 +726,9 @@ static PyObject *__pyx_n_s_file;
 static PyObject *__pyx_n_s_i;
 static PyObject *__pyx_n_s_import;
 static PyObject *__pyx_n_s_input_size;
-static PyObject *__pyx_n_s_layers_count;
+static PyObject *__pyx_n_s_layers;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_neuronet;
-static PyObject *__pyx_n_s_neurons_count;
 static PyObject *__pyx_n_s_nn;
 static PyObject *__pyx_n_s_prefix;
 static PyObject *__pyx_n_s_print;
@@ -758,7 +756,7 @@ static PyObject *__pyx_codeobj__5;
  * #Simple xor test
  * def train_and_test():             # <<<<<<<<<<<<<<
  * 	cdef neuronet.MLP nn
- * 	layers_count=2
+ * 	layers=[2,1]
  */
 
 /* Python wrapper */
@@ -777,47 +775,38 @@ static PyObject *__pyx_pw_3xor_1train_and_test(PyObject *__pyx_self, CYTHON_UNUS
 
 static PyObject *__pyx_pf_3xor_train_and_test(CYTHON_UNUSED PyObject *__pyx_self) {
   struct __pyx_obj_8neuronet_MLP *__pyx_v_nn = 0;
-  long __pyx_v_layers_count;
-  PyObject *__pyx_v_neurons_count = NULL;
+  PyObject *__pyx_v_layers = NULL;
   long __pyx_v_input_size;
   CYTHON_UNUSED long __pyx_v_i;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
-  PyObject *__pyx_t_2 = NULL;
+  Py_ssize_t __pyx_t_2;
   PyObject *__pyx_t_3 = NULL;
-  long __pyx_t_4;
-  float __pyx_t_5[2];
-  float __pyx_t_6[1];
-  float __pyx_t_7[2];
-  float __pyx_t_8[1];
-  float __pyx_t_9[2];
-  float __pyx_t_10[1];
-  float __pyx_t_11[2];
-  float __pyx_t_12[1];
-  float __pyx_t_13[2];
+  PyObject *__pyx_t_4 = NULL;
+  long __pyx_t_5;
+  float __pyx_t_6[2];
+  float __pyx_t_7[1];
+  float __pyx_t_8[2];
+  float __pyx_t_9[1];
+  float __pyx_t_10[2];
+  float __pyx_t_11[1];
+  float __pyx_t_12[2];
+  float __pyx_t_13[1];
   float __pyx_t_14[2];
   float __pyx_t_15[2];
   float __pyx_t_16[2];
+  float __pyx_t_17[2];
   __Pyx_RefNannySetupContext("train_and_test", 0);
 
   /* "xor.pyx":8
  * def train_and_test():
  * 	cdef neuronet.MLP nn
- * 	layers_count=2             # <<<<<<<<<<<<<<
- * 	neurons_count=[2,1]
+ * 	layers=[2,1]             # <<<<<<<<<<<<<<
  * 	input_size=2
+ * 	nn=neuronet.MLP(input_size,layers,len(layers))
  */
-  __pyx_v_layers_count = 2;
-
-  /* "xor.pyx":9
- * 	cdef neuronet.MLP nn
- * 	layers_count=2
- * 	neurons_count=[2,1]             # <<<<<<<<<<<<<<
- * 	input_size=2
- * 	nn=neuronet.MLP(input_size,neurons_count,layers_count)
- */
-  __pyx_t_1 = PyList_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 9, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_int_2);
   __Pyx_GIVEREF(__pyx_int_2);
@@ -825,61 +814,62 @@ static PyObject *__pyx_pf_3xor_train_and_test(CYTHON_UNUSED PyObject *__pyx_self
   __Pyx_INCREF(__pyx_int_1);
   __Pyx_GIVEREF(__pyx_int_1);
   PyList_SET_ITEM(__pyx_t_1, 1, __pyx_int_1);
-  __pyx_v_neurons_count = ((PyObject*)__pyx_t_1);
+  __pyx_v_layers = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "xor.pyx":10
- * 	layers_count=2
- * 	neurons_count=[2,1]
+  /* "xor.pyx":9
+ * 	cdef neuronet.MLP nn
+ * 	layers=[2,1]
  * 	input_size=2             # <<<<<<<<<<<<<<
- * 	nn=neuronet.MLP(input_size,neurons_count,layers_count)
+ * 	nn=neuronet.MLP(input_size,layers,len(layers))
  * 
  */
   __pyx_v_input_size = 2;
 
-  /* "xor.pyx":11
- * 	neurons_count=[2,1]
+  /* "xor.pyx":10
+ * 	layers=[2,1]
  * 	input_size=2
- * 	nn=neuronet.MLP(input_size,neurons_count,layers_count)             # <<<<<<<<<<<<<<
+ * 	nn=neuronet.MLP(input_size,layers,len(layers))             # <<<<<<<<<<<<<<
  * 
  * 	nn.read_weights("weights","prefix_")
  */
-  __pyx_t_1 = __Pyx_PyInt_From_long(__pyx_v_input_size); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 11, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_long(__pyx_v_input_size); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 10, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyInt_From_long(__pyx_v_layers_count); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 11, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 11, __pyx_L1_error)
+  __pyx_t_2 = PyList_GET_SIZE(__pyx_v_layers); if (unlikely(__pyx_t_2 == -1)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __pyx_t_3 = PyInt_FromSsize_t(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 10, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_1);
-  PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1);
-  __Pyx_INCREF(__pyx_v_neurons_count);
-  __Pyx_GIVEREF(__pyx_v_neurons_count);
-  PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_v_neurons_count);
-  __Pyx_GIVEREF(__pyx_t_2);
-  PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_t_2);
+  PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
+  __Pyx_INCREF(__pyx_v_layers);
+  __Pyx_GIVEREF(__pyx_v_layers);
+  PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_v_layers);
+  __Pyx_GIVEREF(__pyx_t_3);
+  PyTuple_SET_ITEM(__pyx_t_4, 2, __pyx_t_3);
   __pyx_t_1 = 0;
-  __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_8neuronet_MLP), __pyx_t_3, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 11, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_v_nn = ((struct __pyx_obj_8neuronet_MLP *)__pyx_t_2);
-  __pyx_t_2 = 0;
+  __pyx_t_3 = 0;
+  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_8neuronet_MLP), __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_v_nn = ((struct __pyx_obj_8neuronet_MLP *)__pyx_t_3);
+  __pyx_t_3 = 0;
 
-  /* "xor.pyx":13
- * 	nn=neuronet.MLP(input_size,neurons_count,layers_count)
+  /* "xor.pyx":12
+ * 	nn=neuronet.MLP(input_size,layers,len(layers))
  * 
  * 	nn.read_weights("weights","prefix_")             # <<<<<<<<<<<<<<
  * 	#Learning rate
  * 	nn.set_n(1)
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_nn), __pyx_n_s_read_weights); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 13, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 13, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_nn), __pyx_n_s_read_weights); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 12, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "xor.pyx":15
+  /* "xor.pyx":14
  * 	nn.read_weights("weights","prefix_")
  * 	#Learning rate
  * 	nn.set_n(1)             # <<<<<<<<<<<<<<
@@ -888,177 +878,177 @@ static PyObject *__pyx_pf_3xor_train_and_test(CYTHON_UNUSED PyObject *__pyx_self
  */
   ((struct __pyx_vtabstruct_8neuronet_MLP *)__pyx_v_nn->__pyx_vtab)->set_n(__pyx_v_nn, 1.0);
 
-  /* "xor.pyx":16
+  /* "xor.pyx":15
  * 	#Learning rate
  * 	nn.set_n(1)
  * 	for i in range(2**10):             # <<<<<<<<<<<<<<
  * 		nn.train([0.,0.],[0.])
  * 		nn.train([0.,1.],[1.])
  */
-  for (__pyx_t_4 = 0; __pyx_t_4 < 0x400; __pyx_t_4+=1) {
-    __pyx_v_i = __pyx_t_4;
+  for (__pyx_t_5 = 0; __pyx_t_5 < 0x400; __pyx_t_5+=1) {
+    __pyx_v_i = __pyx_t_5;
 
-    /* "xor.pyx":17
+    /* "xor.pyx":16
  * 	nn.set_n(1)
  * 	for i in range(2**10):
  * 		nn.train([0.,0.],[0.])             # <<<<<<<<<<<<<<
  * 		nn.train([0.,1.],[1.])
  * 		nn.train([1.,1.],[0.])
  */
-    __pyx_t_5[0] = 0.;
-    __pyx_t_5[1] = 0.;
     __pyx_t_6[0] = 0.;
-    ((struct __pyx_vtabstruct_8neuronet_MLP *)__pyx_v_nn->__pyx_vtab)->train(__pyx_v_nn, __pyx_t_5, __pyx_t_6);
+    __pyx_t_6[1] = 0.;
+    __pyx_t_7[0] = 0.;
+    ((struct __pyx_vtabstruct_8neuronet_MLP *)__pyx_v_nn->__pyx_vtab)->train(__pyx_v_nn, __pyx_t_6, __pyx_t_7);
 
-    /* "xor.pyx":18
+    /* "xor.pyx":17
  * 	for i in range(2**10):
  * 		nn.train([0.,0.],[0.])
  * 		nn.train([0.,1.],[1.])             # <<<<<<<<<<<<<<
  * 		nn.train([1.,1.],[0.])
  * 		nn.train([1.,0.],[1.])
  */
-    __pyx_t_7[0] = 0.;
-    __pyx_t_7[1] = 1.;
-    __pyx_t_8[0] = 1.;
-    ((struct __pyx_vtabstruct_8neuronet_MLP *)__pyx_v_nn->__pyx_vtab)->train(__pyx_v_nn, __pyx_t_7, __pyx_t_8);
+    __pyx_t_8[0] = 0.;
+    __pyx_t_8[1] = 1.;
+    __pyx_t_9[0] = 1.;
+    ((struct __pyx_vtabstruct_8neuronet_MLP *)__pyx_v_nn->__pyx_vtab)->train(__pyx_v_nn, __pyx_t_8, __pyx_t_9);
 
-    /* "xor.pyx":19
+    /* "xor.pyx":18
  * 		nn.train([0.,0.],[0.])
  * 		nn.train([0.,1.],[1.])
  * 		nn.train([1.,1.],[0.])             # <<<<<<<<<<<<<<
  * 		nn.train([1.,0.],[1.])
  * 	print("Test:")
  */
-    __pyx_t_9[0] = 1.;
-    __pyx_t_9[1] = 1.;
-    __pyx_t_10[0] = 0.;
-    ((struct __pyx_vtabstruct_8neuronet_MLP *)__pyx_v_nn->__pyx_vtab)->train(__pyx_v_nn, __pyx_t_9, __pyx_t_10);
+    __pyx_t_10[0] = 1.;
+    __pyx_t_10[1] = 1.;
+    __pyx_t_11[0] = 0.;
+    ((struct __pyx_vtabstruct_8neuronet_MLP *)__pyx_v_nn->__pyx_vtab)->train(__pyx_v_nn, __pyx_t_10, __pyx_t_11);
 
-    /* "xor.pyx":20
+    /* "xor.pyx":19
  * 		nn.train([0.,1.],[1.])
  * 		nn.train([1.,1.],[0.])
  * 		nn.train([1.,0.],[1.])             # <<<<<<<<<<<<<<
  * 	print("Test:")
  * 	print(str(nn.ask([0.,0.])[0]))
  */
-    __pyx_t_11[0] = 1.;
-    __pyx_t_11[1] = 0.;
     __pyx_t_12[0] = 1.;
-    ((struct __pyx_vtabstruct_8neuronet_MLP *)__pyx_v_nn->__pyx_vtab)->train(__pyx_v_nn, __pyx_t_11, __pyx_t_12);
+    __pyx_t_12[1] = 0.;
+    __pyx_t_13[0] = 1.;
+    ((struct __pyx_vtabstruct_8neuronet_MLP *)__pyx_v_nn->__pyx_vtab)->train(__pyx_v_nn, __pyx_t_12, __pyx_t_13);
   }
 
-  /* "xor.pyx":21
+  /* "xor.pyx":20
  * 		nn.train([1.,1.],[0.])
  * 		nn.train([1.,0.],[1.])
  * 	print("Test:")             # <<<<<<<<<<<<<<
  * 	print(str(nn.ask([0.,0.])[0]))
  * 	print(str(nn.ask([0.,1.])[0]))
  */
-  if (__Pyx_PrintOne(0, __pyx_kp_s_Test) < 0) __PYX_ERR(0, 21, __pyx_L1_error)
+  if (__Pyx_PrintOne(0, __pyx_kp_s_Test) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
 
-  /* "xor.pyx":22
+  /* "xor.pyx":21
  * 		nn.train([1.,0.],[1.])
  * 	print("Test:")
  * 	print(str(nn.ask([0.,0.])[0]))             # <<<<<<<<<<<<<<
  * 	print(str(nn.ask([0.,1.])[0]))
  * 	print(str(nn.ask([1.,0.])[0]))
  */
-  __pyx_t_13[0] = 0.;
-  __pyx_t_13[1] = 0.;
-  __pyx_t_3 = PyFloat_FromDouble((((struct __pyx_vtabstruct_8neuronet_MLP *)__pyx_v_nn->__pyx_vtab)->ask(__pyx_v_nn, __pyx_t_13)[0])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 22, __pyx_L1_error)
+  __pyx_t_14[0] = 0.;
+  __pyx_t_14[1] = 0.;
+  __pyx_t_4 = PyFloat_FromDouble((((struct __pyx_vtabstruct_8neuronet_MLP *)__pyx_v_nn->__pyx_vtab)->ask(__pyx_v_nn, __pyx_t_14)[0])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 21, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 22, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_GIVEREF(__pyx_t_3);
-  PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
-  __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)(&PyString_Type)), __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 22, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_PrintOne(0, __pyx_t_3) < 0) __PYX_ERR(0, 22, __pyx_L1_error)
+  __Pyx_GIVEREF(__pyx_t_4);
+  PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4);
+  __pyx_t_4 = 0;
+  __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)(&PyString_Type)), __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (__Pyx_PrintOne(0, __pyx_t_4) < 0) __PYX_ERR(0, 21, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "xor.pyx":23
+  /* "xor.pyx":22
  * 	print("Test:")
  * 	print(str(nn.ask([0.,0.])[0]))
  * 	print(str(nn.ask([0.,1.])[0]))             # <<<<<<<<<<<<<<
  * 	print(str(nn.ask([1.,0.])[0]))
  * 	print(str(nn.ask([1.,1.])[0]))
  */
-  __pyx_t_14[0] = 0.;
-  __pyx_t_14[1] = 1.;
-  __pyx_t_3 = PyFloat_FromDouble((((struct __pyx_vtabstruct_8neuronet_MLP *)__pyx_v_nn->__pyx_vtab)->ask(__pyx_v_nn, __pyx_t_14)[0])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 23, __pyx_L1_error)
+  __pyx_t_15[0] = 0.;
+  __pyx_t_15[1] = 1.;
+  __pyx_t_4 = PyFloat_FromDouble((((struct __pyx_vtabstruct_8neuronet_MLP *)__pyx_v_nn->__pyx_vtab)->ask(__pyx_v_nn, __pyx_t_15)[0])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 22, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 23, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_GIVEREF(__pyx_t_3);
-  PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
-  __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)(&PyString_Type)), __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 23, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_PrintOne(0, __pyx_t_3) < 0) __PYX_ERR(0, 23, __pyx_L1_error)
+  __Pyx_GIVEREF(__pyx_t_4);
+  PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4);
+  __pyx_t_4 = 0;
+  __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)(&PyString_Type)), __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 22, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (__Pyx_PrintOne(0, __pyx_t_4) < 0) __PYX_ERR(0, 22, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "xor.pyx":24
+  /* "xor.pyx":23
  * 	print(str(nn.ask([0.,0.])[0]))
  * 	print(str(nn.ask([0.,1.])[0]))
  * 	print(str(nn.ask([1.,0.])[0]))             # <<<<<<<<<<<<<<
  * 	print(str(nn.ask([1.,1.])[0]))
  * 	nn.write_weights("weights","prefix_")
  */
-  __pyx_t_15[0] = 1.;
-  __pyx_t_15[1] = 0.;
-  __pyx_t_3 = PyFloat_FromDouble((((struct __pyx_vtabstruct_8neuronet_MLP *)__pyx_v_nn->__pyx_vtab)->ask(__pyx_v_nn, __pyx_t_15)[0])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 24, __pyx_L1_error)
+  __pyx_t_16[0] = 1.;
+  __pyx_t_16[1] = 0.;
+  __pyx_t_4 = PyFloat_FromDouble((((struct __pyx_vtabstruct_8neuronet_MLP *)__pyx_v_nn->__pyx_vtab)->ask(__pyx_v_nn, __pyx_t_16)[0])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 23, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 24, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_GIVEREF(__pyx_t_3);
-  PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
-  __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)(&PyString_Type)), __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 24, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_PrintOne(0, __pyx_t_3) < 0) __PYX_ERR(0, 24, __pyx_L1_error)
+  __Pyx_GIVEREF(__pyx_t_4);
+  PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4);
+  __pyx_t_4 = 0;
+  __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)(&PyString_Type)), __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 23, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (__Pyx_PrintOne(0, __pyx_t_4) < 0) __PYX_ERR(0, 23, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "xor.pyx":25
+  /* "xor.pyx":24
  * 	print(str(nn.ask([0.,1.])[0]))
  * 	print(str(nn.ask([1.,0.])[0]))
  * 	print(str(nn.ask([1.,1.])[0]))             # <<<<<<<<<<<<<<
  * 	nn.write_weights("weights","prefix_")
  * 
  */
-  __pyx_t_16[0] = 1.;
-  __pyx_t_16[1] = 1.;
-  __pyx_t_3 = PyFloat_FromDouble((((struct __pyx_vtabstruct_8neuronet_MLP *)__pyx_v_nn->__pyx_vtab)->ask(__pyx_v_nn, __pyx_t_16)[0])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_t_17[0] = 1.;
+  __pyx_t_17[1] = 1.;
+  __pyx_t_4 = PyFloat_FromDouble((((struct __pyx_vtabstruct_8neuronet_MLP *)__pyx_v_nn->__pyx_vtab)->ask(__pyx_v_nn, __pyx_t_17)[0])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 24, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 25, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_GIVEREF(__pyx_t_3);
-  PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
-  __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)(&PyString_Type)), __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 25, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_PrintOne(0, __pyx_t_3) < 0) __PYX_ERR(0, 25, __pyx_L1_error)
+  __Pyx_GIVEREF(__pyx_t_4);
+  PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4);
+  __pyx_t_4 = 0;
+  __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)(&PyString_Type)), __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 24, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (__Pyx_PrintOne(0, __pyx_t_4) < 0) __PYX_ERR(0, 24, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "xor.pyx":26
+  /* "xor.pyx":25
  * 	print(str(nn.ask([1.,0.])[0]))
  * 	print(str(nn.ask([1.,1.])[0]))
  * 	nn.write_weights("weights","prefix_")             # <<<<<<<<<<<<<<
  * 
  * 	return
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_nn), __pyx_n_s_write_weights); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 26, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_nn), __pyx_n_s_write_weights); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 25, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 26, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "xor.pyx":28
+  /* "xor.pyx":27
  * 	nn.write_weights("weights","prefix_")
  * 
  * 	return             # <<<<<<<<<<<<<<
@@ -1074,25 +1064,25 @@ static PyObject *__pyx_pf_3xor_train_and_test(CYTHON_UNUSED PyObject *__pyx_self
  * #Simple xor test
  * def train_and_test():             # <<<<<<<<<<<<<<
  * 	cdef neuronet.MLP nn
- * 	layers_count=2
+ * 	layers=[2,1]
  */
 
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
   __Pyx_AddTraceback("xor.train_and_test", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF((PyObject *)__pyx_v_nn);
-  __Pyx_XDECREF(__pyx_v_neurons_count);
+  __Pyx_XDECREF(__pyx_v_layers);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "xor.pyx":30
+/* "xor.pyx":29
  * 	return
  * 
  * def run():             # <<<<<<<<<<<<<<
@@ -1121,12 +1111,12 @@ static PyObject *__pyx_pf_3xor_2run(CYTHON_UNUSED PyObject *__pyx_self) {
   PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannySetupContext("run", 0);
 
-  /* "xor.pyx":31
+  /* "xor.pyx":30
  * 
  * def run():
  * 	train_and_test()             # <<<<<<<<<<<<<<
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_train_and_test); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_train_and_test); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 30, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && unlikely(PyMethod_Check(__pyx_t_2))) {
@@ -1139,16 +1129,16 @@ static PyObject *__pyx_pf_3xor_2run(CYTHON_UNUSED PyObject *__pyx_self) {
     }
   }
   if (__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 31, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 30, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 31, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 30, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "xor.pyx":30
+  /* "xor.pyx":29
  * 	return
  * 
  * def run():             # <<<<<<<<<<<<<<
@@ -1200,10 +1190,9 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_i, __pyx_k_i, sizeof(__pyx_k_i), 0, 0, 1, 1},
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
   {&__pyx_n_s_input_size, __pyx_k_input_size, sizeof(__pyx_k_input_size), 0, 0, 1, 1},
-  {&__pyx_n_s_layers_count, __pyx_k_layers_count, sizeof(__pyx_k_layers_count), 0, 0, 1, 1},
+  {&__pyx_n_s_layers, __pyx_k_layers, sizeof(__pyx_k_layers), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_neuronet, __pyx_k_neuronet, sizeof(__pyx_k_neuronet), 0, 0, 1, 1},
-  {&__pyx_n_s_neurons_count, __pyx_k_neurons_count, sizeof(__pyx_k_neurons_count), 0, 0, 1, 1},
   {&__pyx_n_s_nn, __pyx_k_nn, sizeof(__pyx_k_nn), 0, 0, 1, 1},
   {&__pyx_n_s_prefix, __pyx_k_prefix, sizeof(__pyx_k_prefix), 0, 0, 1, 1},
   {&__pyx_n_s_print, __pyx_k_print, sizeof(__pyx_k_print), 0, 0, 1, 1},
@@ -1219,7 +1208,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 16, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 15, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -1229,25 +1218,25 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "xor.pyx":13
- * 	nn=neuronet.MLP(input_size,neurons_count,layers_count)
+  /* "xor.pyx":12
+ * 	nn=neuronet.MLP(input_size,layers,len(layers))
  * 
  * 	nn.read_weights("weights","prefix_")             # <<<<<<<<<<<<<<
  * 	#Learning rate
  * 	nn.set_n(1)
  */
-  __pyx_tuple_ = PyTuple_Pack(2, __pyx_n_s_weights, __pyx_n_s_prefix); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 13, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(2, __pyx_n_s_weights, __pyx_n_s_prefix); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
-  /* "xor.pyx":26
+  /* "xor.pyx":25
  * 	print(str(nn.ask([1.,0.])[0]))
  * 	print(str(nn.ask([1.,1.])[0]))
  * 	nn.write_weights("weights","prefix_")             # <<<<<<<<<<<<<<
  * 
  * 	return
  */
-  __pyx_tuple__2 = PyTuple_Pack(2, __pyx_n_s_weights, __pyx_n_s_prefix); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 26, __pyx_L1_error)
+  __pyx_tuple__2 = PyTuple_Pack(2, __pyx_n_s_weights, __pyx_n_s_prefix); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 25, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
 
@@ -1256,20 +1245,20 @@ static int __Pyx_InitCachedConstants(void) {
  * #Simple xor test
  * def train_and_test():             # <<<<<<<<<<<<<<
  * 	cdef neuronet.MLP nn
- * 	layers_count=2
+ * 	layers=[2,1]
  */
-  __pyx_tuple__3 = PyTuple_Pack(5, __pyx_n_s_nn, __pyx_n_s_layers_count, __pyx_n_s_neurons_count, __pyx_n_s_input_size, __pyx_n_s_i); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 6, __pyx_L1_error)
+  __pyx_tuple__3 = PyTuple_Pack(4, __pyx_n_s_nn, __pyx_n_s_layers, __pyx_n_s_input_size, __pyx_n_s_i); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__3);
   __Pyx_GIVEREF(__pyx_tuple__3);
-  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(0, 0, 5, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__3, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_C_Users_User_Dropbox_mlp_library, __pyx_n_s_train_and_test, 6, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 6, __pyx_L1_error)
+  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(0, 0, 4, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__3, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_C_Users_User_Dropbox_mlp_library, __pyx_n_s_train_and_test, 6, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 6, __pyx_L1_error)
 
-  /* "xor.pyx":30
+  /* "xor.pyx":29
  * 	return
  * 
  * def run():             # <<<<<<<<<<<<<<
  * 	train_and_test()
  */
-  __pyx_codeobj__5 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_C_Users_User_Dropbox_mlp_library, __pyx_n_s_run, 30, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__5)) __PYX_ERR(0, 30, __pyx_L1_error)
+  __pyx_codeobj__5 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_C_Users_User_Dropbox_mlp_library, __pyx_n_s_run, 29, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__5)) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -1395,22 +1384,22 @@ PyMODINIT_FUNC PyInit_xor(void)
  * #Simple xor test
  * def train_and_test():             # <<<<<<<<<<<<<<
  * 	cdef neuronet.MLP nn
- * 	layers_count=2
+ * 	layers=[2,1]
  */
   __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_3xor_1train_and_test, NULL, __pyx_n_s_xor); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_train_and_test, __pyx_t_1) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "xor.pyx":30
+  /* "xor.pyx":29
  * 	return
  * 
  * def run():             # <<<<<<<<<<<<<<
  * 	train_and_test()
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_3xor_3run, NULL, __pyx_n_s_xor); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 30, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_3xor_3run, NULL, __pyx_n_s_xor); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_run, __pyx_t_1) < 0) __PYX_ERR(0, 30, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_run, __pyx_t_1) < 0) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "xor.pyx":1

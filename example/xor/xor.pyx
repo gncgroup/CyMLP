@@ -4,11 +4,10 @@ cimport neuronet
 
 #Simple xor test
 def train_and_test():   
-	cdef neuronet.MLP nn
-	layers_count=2
-	neurons_count=[2,1]
+	cdef neuronet.MLP nn 
+	layers=[2,1]
 	input_size=2
-	nn=neuronet.MLP(input_size,neurons_count,layers_count)
+	nn=neuronet.MLP(input_size,layers,len(layers))
 	
 	nn.read_weights("weights","prefix_")
 	#Learning rate
