@@ -41,7 +41,7 @@ float* backprop_compute(float* vector,float* correct_output,float learning_rate,
 				for(w=0;w<layers[l-1];w++){
 					weights[l-1][n][w]+=learning_rate*res[l-1][w]*delta[l][n];
 				}
-				weights[l-1][n][layers[l-1]]+=n*delta[l][n]; //BIAS
+				weights[l-1][n][layers[l-1]]+=learning_rate*delta[l][n]; //BIAS
 			}
 		}
 		
