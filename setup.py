@@ -3,10 +3,7 @@ from Cython.Build import cythonize
 import numpy
 
 setup(
-    ext_modules=[
-        Extension("neuronet", ["neuronet.c"],
-                  include_dirs=[numpy.get_include()]),
-    ],
+    ext_modules=[Extension("neuronet", ["neuronet.c"],include_dirs=[numpy.get_include()],extra_compile_args = ["-O3", "-ffast-math", "-march=native", "-fopenmp" ], extra_link_args=['-fopenmp'])],
 )
  
 

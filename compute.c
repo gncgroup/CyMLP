@@ -2,13 +2,13 @@
 
 float* fprop_compute(float* vector,float*** weights,float** res,int* layers,int layers_count)
 {
-		float sum;
 		res[0]=vector;
-		
 		int l,n,w;
 		for(l=0;l<layers_count;l++){
+			#pragma omp parallel for private(n,w)
 			for(n=0;n<layers[l+1];n++){
-				sum=weights[l][n][layers[l]]; //BIAS	
+				float sum=0;
+				sum=weights[l][n][layers[l]]; //BIAS
 				for(w=0;w<layers[l];w++){
 					sum+=res[l][w]*weights[l][n][w];
 				}
@@ -21,18 +21,17 @@ float* fprop_compute(float* vector,float*** weights,float** res,int* layers,int 
 
 float* backprop_compute(float* vector,float* correct_output,float learning_rate,float*** weights,float** res,int* layers,int layers_count)
 {
-		float** delta;	
-		float sum;
+		float** delta;
 		delta=float_arr_init_2d_p(layers_count+1,layers);
-		
-		int l,n,pn,w;
-		for(l=layers_count;l>0;l--){ 
+		int l,n,w,pn,i;
+		for(l=layers_count;l>0;l--){
+			#pragma omp parallel for private(n,w,pn)
 			for(n=0;n<layers[l];n++){
 				delta[l][n]=res[l][n]*(1-res[l][n]);
 				if(l==layers_count){
 					delta[l][n]*=correct_output[n]-res[l][n]; 
 				}else{
-					sum=0;
+					float sum=0;
 					for(pn=0;pn<layers[l+1];pn++){
 						sum+=weights[l][pn][n]*delta[l+1][pn];
 					}
@@ -45,7 +44,6 @@ float* backprop_compute(float* vector,float* correct_output,float learning_rate,
 			}
 		}
 		
-		int i;
 		for(i=0;i<layers_count+1;i++){
 			free(delta[i]);
 		}

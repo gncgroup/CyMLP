@@ -1,3 +1,5 @@
+cimport cython
+cimport openmp
 cdef extern from "arrayinit.c":
 	int* int_arr_init(int size)
 	float* float_arr_init(int size)
@@ -14,7 +16,6 @@ from libc.math cimport tanh
 from libc.math cimport abs 
 import numpy as np 
 cimport numpy as np
-cimport cython
 import copy
 import random  
 import os.path 
